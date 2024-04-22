@@ -12,7 +12,7 @@ import {
 } from '@/validators/validate-post';
 import { processSlugUnique, getPostIdBySlug } from "@/lib/data-post";
 import { CreatePostCategory, PostCategoryState, validatedPostCategory } from "@/validators/validate-categories-post";
-import { insertDataInPostUser } from "@/lib/data-user";
+// import { insertDataInPostUser } from "@/lib/data-user";
 
 /**
  * 
@@ -37,7 +37,7 @@ export async function createNewPost(userId:number, prevState:PostState, formData
         title
     } = validatedFields.data;
     const slug = processSlugUnique(title);
-    
+    // const authorId = userId;
     // Handle logic with try catch block
     const isValid = validateSlug(slug, title);
     if(!isValid) {
@@ -49,6 +49,7 @@ export async function createNewPost(userId:number, prevState:PostState, formData
                 ...validatedFields.data,
                 updated_at: updatedAt,
                 slug,
+                author_id: userId,
                 // post_status_id,
                 post_type_id: Number(post_type_id)
             }
@@ -56,7 +57,7 @@ export async function createNewPost(userId:number, prevState:PostState, formData
         const postId = await getPostIdBySlug(slug);
         if(!postId) throw new Error("Get post id by slug is failed!");
         
-        await insertDataInPostUser(userId, postId);
+        // await insertDataInPostUser(userId, postId);
         // const insertPostUser = await insertDataInPostUser(userId, postId);
     } catch (error) {
         return {
@@ -64,8 +65,8 @@ export async function createNewPost(userId:number, prevState:PostState, formData
         }
     }
     
-    revalidatePath('/');
-    redirect('/');
+    revalidatePath('/manage-blog/posts');
+    redirect('/manage-blog/posts');
 }
 /**
  * Update post
@@ -101,8 +102,8 @@ export async function updatePost(slug:string, prevState: PostState, formData: Fo
     } catch (error) {
         throw new Error("Update a post failed: " + error);
     }
-    revalidatePath('/');
-    redirect('/');
+    revalidatePath('/manage-blog/posts');
+    redirect('/manage-blog/posts');
 }
 
 /**
@@ -116,7 +117,7 @@ export async function deletePost(id: number) {
                 id
             },
         })
-        revalidatePath('/manage-post');
+        revalidatePath('/manage-blog/posts');
     } catch (error) {
         throw new Error("Delete a post failed: " + error);
     }
@@ -150,8 +151,8 @@ export async function createCategoryPost(prevPostState:PostCategoryState, formDa
             message:`Create a category for post is failed:  + ${error}`
         } 
     }
-    revalidatePath('/');
-    redirect('/');
+    revalidatePath('/manage-blog/categories');
+    redirect('/manage-blog/categories');
 }
 
 export async function updatePostCategory(id: number, prevPostState:PostCategoryState, formData: FormData) {
@@ -216,7 +217,7 @@ export async function changeStatusPost(id: number, formData:FormData) {
                 is_show: isShow === "Show" ? "Show" : "Hidden"
             }
         })
-        revalidatePath('/manage-post');
+        revalidatePath('/manage-blog/categories');
         return status;
     } catch (error) {
         throw new Error("Delete a post category failed: " + error);

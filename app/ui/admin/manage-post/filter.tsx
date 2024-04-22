@@ -96,8 +96,8 @@ export function PostStatusFilter({
     return (
         <>
         <div className="collapse collapse-arrow">
-                <label htmlFor="category-dropdown-button" className='sr-only'>Category</label>
-                <input type="checkbox" className="w-full" id="category-dropdown-button"/> 
+                <label htmlFor="status-dropdown-button" className='sr-only'>Category</label>
+                <input type="checkbox" className="w-full" id="status-dropdown-button"/> 
                 <div className="collapse-title text-base text-gray-900">
                     Status
                 </div>

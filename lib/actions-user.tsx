@@ -103,6 +103,11 @@ export async function getUserById(id: number) {
     }
 }
 
+/**
+ * Get user by email
+ * @param email 
+ * @returns 
+ */
 export async function getUserByEmail(email: string) {
     try {
         const user = await prisma.user.findUnique({

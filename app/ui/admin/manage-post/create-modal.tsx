@@ -6,10 +6,12 @@ import { useState } from "react";
 import { createCategoryPost } from "@/lib/actions-post";
 import { useFormState } from "react-dom";
 import { initialState } from "@/configs/constants";
+import initIcon from "@/public/tree.jpg";
 
 export const CreateModalPostCategories = () => {
     const [state, dispatch] = useFormState(createCategoryPost, initialState);
     const [icon, setIcon] = useState<string>();
+
     const [loading, setLoading] = useState<boolean>(false);
     const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) {
@@ -63,7 +65,7 @@ export const CreateModalPostCategories = () => {
                                     ) : (
                                         <div className="col-span-2 mt-2 mb-2 border-[1px] border-gray-300 rounded-xl relative w-[100px] h-[100px]">
                                             <Image
-                                                src={icon!}
+                                                src={icon||initIcon}
                                                 alt="icon"
                                                 // width={100}
                                                 // height={100}

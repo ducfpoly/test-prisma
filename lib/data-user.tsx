@@ -111,19 +111,23 @@ export async function processAccountProvider(email: string|null, userRole:number
 //     }
 // }
 
-export async function insertDataInPostUser(userId: number, postId: number) {
-    try {
-        await prisma.post_User.create({
-            data: {
-                user_id: userId,
-                post_id: postId
-            }
-        })
-    } catch (error) {
-        throw new Error("Insert data in insert data is failed: " + error);
-    }
-}
+// export async function insertDataInPostUser(userId: number, postId: number) {
+//     try {
+//         await prisma.post_User.create({
+//             data: {
+//                 user_id: userId,
+//                 post_id: postId
+//             }
+//         })
+//     } catch (error) {
+//         throw new Error("Insert data in insert data is failed: " + error);
+//     }
+// }
 
+/**
+ * Get all users
+ * @returns 
+ */
 export async function getAllUsers() {
     try {
         const users = await prisma.user.findMany();
@@ -132,3 +136,20 @@ export async function getAllUsers() {
         throw new Error("Get all users is failed: " + error);
     }
 }
+
+export async function getAuthorOfPost(userId: number) {
+    try {
+        const users = await prisma.user.findUnique({
+            where: {
+                id: userId
+            },
+            select: {
+                username: true
+            }
+        });
+        return users;
+    } catch (error) {
+        throw new Error("Get all users is failed: " + error);
+    }
+}
+

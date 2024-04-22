@@ -45,7 +45,8 @@ export type PostType = {
     // post_status_id:number;
     post_type_id:number;
     slug:string;
-    is_show: string
+    is_show: string,
+    author_id: number
 }
 
 export type PostCategoriesType = {

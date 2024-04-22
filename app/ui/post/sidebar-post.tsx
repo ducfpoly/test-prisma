@@ -32,7 +32,6 @@ const SidebarPost = ({
         setThumbnail(result?.url);
     }
     
-
     return (
         <div className="max-w-md mx-auto relative z-0 w-full group">
             <input 
@@ -78,7 +77,7 @@ const SidebarPost = ({
                 <label htmlFor="Category" className=" mt-4 block mb-2 text-sm font-medium text-gray-400 dark:text-white">Category</label>
                 <select 
                     id="Category" 
-                    defaultValue={post?.post_type_id ?? categories[1].name_post_type}
+                    defaultValue={post?.post_type_id || 1}
                     name="post_type_id"
                     className="cursor-pointer bg-base-100 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 >

@@ -64,8 +64,12 @@ model User {
 //   provider   String
   role       Int         @default(0)
   addresses  Address[]
-  post_user  Post_User[]
+  is_show Show @default(Show)
+  // post_user  Post_User[]
+  post Post[]
   // employees Employee?
+  comment Comment[]
+  collection Collection[]
 }
 
 model Address {
@@ -92,22 +96,27 @@ model Post {
   post_type      Post_Type   @relation(fields: [post_type_id], references: [id])
   post_type_id   Int
   slug String   @unique
-  post_user      Post_User[]
+  // post_user      Post_User[]
   views Int      @default(0)
   is_show Show @default(Show)
-  post_date DateTime?
+  // post_date DateTime?
+  user User @relation(fields: [author_id], references: [id])
+  author_id Int @unique
+  comment_count Int @default(0)
+  comment Comment[]
+  post_collection Post_Collection[]
 }
 
-model Post_User {
-  // id           Int @id @default(autoincrement())
-  // isFavorite   Int    @default(0)
-  user         User   @relation(fields: [user_id], references: [id])
-  user_id      Int
-  post         Post   @relation(fields: [post_id], references: [id])
-  post_id      Int
-  // post_role_id Int
-  @@id([user_id, post_id])
-}
+// model Post_User {
+//   // id           Int @id @default(autoincrement())
+//   // isFavorite   Int    @default(0)
+//   user         User   @relation(fields: [user_id], references: [id])
+//   user_id      Int
+//   post         Post   @relation(fields: [post_id], references: [id])
+//   post_id      Int
+//   // post_role_id Int
+//   @@id([user_id, post_id])
+// }
 
 // model Post_Role {
 //   id    Int @id @default(autoincrement())
@@ -127,4 +136,45 @@ model Post_Type {
   priority Int   @default(0) @unique
   icon String?
   post           Post[]
+}
+
+model Like_Status {
+  id             Int @id @default(autoincrement())
+  value String @db.VarChar(30) @unique
+  icon String
+  comment Comment[]
+  @@index([id, value])
+}
+
+model Comment {
+  id         Int      @id @default(autoincrement())
+  content        String 
+  user         User   @relation(fields: [user_id], references: [id])
+  user_id      Int
+  like_status  Like_Status   @relation(fields: [like_id], references: [id])
+  like_id      Int
+  like_count Int @default(0)
+  post         Post   @relation(fields: [post_id], references: [id])
+  post_id      Int
+  parent   Comment?  @relation(name: "parent", fields: [parent_id], references: [id])
+  parents  Comment[] @relation(name: "parent")
+  parent_id Int?
+}
+
+model Collection {
+  id         Int      @id @default(autoincrement())
+  value String @db.VarChar(30) @unique
+  user         User   @relation(fields: [user_id], references: [id])
+  user_id      Int
+  post_collection Post_Collection[]
+}
+
+model Post_Collection {
+  id         Int      @id @default(autoincrement())
+  created_at DateTime    @default(now())
+  updated_at DateTime    @updatedAt
+  post  Post  @relation(fields: [post_id], references: [id])
+  post_id      Int
+  collection  Collection  @relation(fields: [collection_id], references: [id])
+  collection_id      Int
 }

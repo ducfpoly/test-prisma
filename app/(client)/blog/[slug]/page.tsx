@@ -27,7 +27,7 @@ export default async function Page({ params }: { params: { slug: string }}) {
             {/* Comment */}
             <div className="grid grid-cols-3 gap-3 mt-5 pt-6">
                 <div className="col-start-1 col-end-3">
-                    <h1 className="my-5 text-orange-600 text-2xl border-b-2 border-orange-200 inline-block p-1">Comments</h1>
+                    <h1 className="my-5 text-orange-600 text-2xl border-b-2 border-orange-200 inline-block p-1">Comments ({post.comment_count})</h1>
                     <Suspense>
                         <FormComment/>
                     </Suspense>

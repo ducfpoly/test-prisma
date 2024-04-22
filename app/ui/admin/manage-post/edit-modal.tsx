@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useFormState } from "react-dom";
 import { initialState } from "@/configs/constants";
 import { PostCategoriesType } from "@/helpers/definitions";
-import intIcon from "@/public/tree.jpg";
+import initIcon from "@/public/tree.jpg";
 import { updatePostCategory } from "@/lib/actions-post";
 
 export const EditModalPostCategories = ({
@@ -15,7 +15,7 @@ export const EditModalPostCategories = ({
 }) => {
     const updatePostCategoryWithId = updatePostCategory.bind(null, category.id)
     const [state, dispatch] = useFormState(updatePostCategoryWithId, initialState);
-    const [icon, setIcon] = useState<string>();
+    const [icon, setIcon] = useState<string>(category.icon || '');
     const [loading, setLoading] = useState<boolean>(false);
     const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) {
@@ -91,7 +91,7 @@ export const EditModalPostCategories = ({
                                         ) : (
                                             <div className="col-span-2 mt-2 mb-2 border-[1px] border-gray-300 rounded-xl relative w-[100px] h-[100px]">
                                                 <Image
-                                                    src={category.icon || intIcon}
+                                                    src={category.icon || initIcon}
                                                     alt="icon"
                                                     // width={100}
                                                     // height={100}
@@ -110,11 +110,12 @@ export const EditModalPostCategories = ({
                                     type="file"
                                     onChange={(e) => handleUpload(e)}
                                 />
+                                
                                 <input 
                                     type="text"
                                     name="icon" 
                                     hidden
-                                    defaultValue={icon || category.icon!}
+                                    defaultValue={icon}
                                 />
                                 <div className="col-span-2">
                                     <label htmlFor="priority" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">priority</label>
@@ -125,7 +126,7 @@ export const EditModalPostCategories = ({
                                         min={0}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" 
                                         required
-                                        value={category.priority}
+                                        defaultValue={category.priority}
                                     />
                                 </div>
                             </div>

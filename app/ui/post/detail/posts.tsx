@@ -3,6 +3,7 @@ import { processContentAddition } from "@/utils/posts.util";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchManyViewsPosts, fetchManyViewsEachPost } from "@/lib/data-post";
+import icon from "@/public/tree.jpg";
 
 export const PostRelated = ({
     posts
@@ -17,7 +18,7 @@ export const PostRelated = ({
                         <div className="flex p-4 bg-white rounded-2xl relative" key={post.id}>
                             <div className="w-48 h-48 relative">
                                 <Image
-                                    src={post.thumbnail || ''}
+                                    src={post.thumbnail || icon}
                                     // width={240}
                                     // height={240}
                                     fill
@@ -59,7 +60,7 @@ export const TheBestViewPost = async () => {
                     >
                         <div className="w-24 h-24 relative">
                             <Image
-                                src={post.thumbnail || ''}
+                                src={post.thumbnail || icon}
                                 // width={100}
                                 // height={120}
                                 fill
@@ -97,7 +98,7 @@ export const ManyViewsPosts = async ({
                     >
                         <div className="relative w-24 h-24">
                             <Image
-                                src={post.thumbnail || ''}
+                                src={post.thumbnail || icon}
                                 // width={100}
                                 // height={120}
                                 fill

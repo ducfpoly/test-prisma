@@ -5,8 +5,13 @@ import { getUserByEmail } from "@/lib/actions-user";
 import { fetchAllPostCategories } from "@/lib/data-post";
 
 const Page = async () => {
-    const postCategories:PostCategoriesType[] = await fetchAllPostCategories();
-    const session = await auth();
+    const data = await Promise.all([
+        await fetchAllPostCategories(),
+        await auth()
+    ]);
+    const postCategories:PostCategoriesType[] = data[0];
+    const session = data[1];
+    
     if(!session) return
     if(!session.user) return
     const email = session.user.email;
