@@ -1,6 +1,5 @@
 import moment from 'moment';
-import { ReadonlyURLSearchParams, usePathname, useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/router';
+
 
 export function formatDate(date: Date): string {
     return moment(date).format('lll')
@@ -12,26 +11,21 @@ export function formatDate(date: Date): string {
 //     ["searchParams", "acacsa"]
 // ]);
 
-// type HandleParameter =  {
-//     term: string, 
-//     arg: string,
-//     pathname: string,
-//     replace: (url:string) => Promise<boolean>,
-//     searchParams: ReadonlyURLSearchParams
+/**
+ * Handle parameter and path name
+ * @param term
+ * @param arg
+ */
+// export const handleParameter = (term: string, arg: string) => {
+//     const searchParams = useSearchParams();
+//     const pathname = usePathname();
+//     const { replace } = useRouter();
+//     const params = new URLSearchParams(searchParams);
+    
+//     if(term) {
+//         params.set(`${arg}`, term);
+//     } else {
+//         params.delete(`${arg}`);
+//     }
+//     replace(`${pathname}?${params.toString()}`);
 // }
-// /**
-//  * Handle parameter and path name
-//  * @param term
-//  * @param arg
-//  */
-export const handleParameter = (
-    term: string, 
-    arg: string,
-    params: URLSearchParams
-) => {
-    if(term) {
-        params.set(`${arg}`, term);
-    } else {
-        params.delete(`${arg}`);
-    }
-}

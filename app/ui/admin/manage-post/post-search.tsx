@@ -1,31 +1,16 @@
 'use client'
-// import { handleParameter } from "@/utils/functions";
 import { useDebouncedCallback } from 'use-debounce';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/router';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 
 const PostSearchBar = () => {
     const searchParams = useSearchParams();
     const pathname = usePathname();
+    const { replace } = useRouter();
     
-    // const handleParameter = (
-    //     term: string, 
-    //     arg: string,
-    // ) => {
-    //     const { replace } = useRouter();
-    //     const params = new URLSearchParams(searchParams);
-    //     if(term) {
-    //         params.set(`${arg}`, term);
-    //     } else {
-    //         params.delete(`${arg}`);
-    //     }
-    //     replace(`${pathname}?${params.toString()}`);
-    // }
     const handleSearch = useDebouncedCallback((
         term: string, 
         arg: string,
     ) => {
-        const { replace } = useRouter();
         const params = new URLSearchParams(searchParams);
         if(term) {
             params.set(`${arg}`, term);
@@ -33,7 +18,7 @@ const PostSearchBar = () => {
             params.delete(`${arg}`);
         }
         replace(`${pathname}?${params.toString()}`);
-    }, 200);
+    }, 700);
     return (
         <form className="w-3/4 mx-auto">   
             <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
