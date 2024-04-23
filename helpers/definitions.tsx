@@ -90,3 +90,15 @@ export type SearchQuery = {
     'max-view':string,
     'min-view':string,
 }
+
+export type Comment = {
+    id: number,
+    content: string,
+    userId: number,
+    likeId: number,
+    likeCount: number,
+    postId: number,
+    parent_id: number,
+    createdAt: Date,
+    updatedAt: Date,
+}

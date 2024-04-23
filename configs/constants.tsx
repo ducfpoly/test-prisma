@@ -1,1 +1,1 @@
-export const initialState = { message: null ||"", errors: {} };
+export const initialState = { message: null || "", errors: {} };

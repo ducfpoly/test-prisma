@@ -1,4 +1,4 @@
-import { deletePost } from "@/lib/actions-post";
+import { deletePost } from "@/lib/post-actions";
 // import Link from "next/link";
 
 export default async function DeletePost({postId}: {postId: number}){

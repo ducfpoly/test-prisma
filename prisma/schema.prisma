@@ -152,13 +152,15 @@ model Comment {
   user         User   @relation(fields: [user_id], references: [id])
   user_id      Int
   like_status  Like_Status   @relation(fields: [like_id], references: [id])
-  like_id      Int
+  like_id      Int  @default(0)
   like_count Int @default(0)
   post         Post   @relation(fields: [post_id], references: [id])
   post_id      Int
   parent   Comment?  @relation(name: "parent", fields: [parent_id], references: [id])
   parents  Comment[] @relation(name: "parent")
-  parent_id Int?
+  parent_id Int @default(0)
+  created_at DateTime    @default(now())
+  updated_at DateTime    @updatedAt
 }
 
 model Collection {

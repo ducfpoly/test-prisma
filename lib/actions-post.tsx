@@ -21,7 +21,7 @@ import { CreatePostCategory, PostCategoryState, validatedPostCategory } from "@/
  */
 export async function createNewPost(userId:number, prevState:PostState, formData: FormData) {
     const validatedFields = validatedPost(CreatePost, formData);
-    // console.log('b4');
+    console.log('b1');
     if (!validatedFields.success) {
         return {
             errors: validatedFields.error.flatten().fieldErrors,
@@ -43,6 +43,7 @@ export async function createNewPost(userId:number, prevState:PostState, formData
     if(!isValid) {
         throw new Error("Slug is not valid!")
     }
+    console.log('b2');
     try {
         await prisma.post.create({
             data: {
@@ -54,8 +55,10 @@ export async function createNewPost(userId:number, prevState:PostState, formData
                 post_type_id: Number(post_type_id)
             }
         })
-        const postId = await getPostIdBySlug(slug);
-        if(!postId) throw new Error("Get post id by slug is failed!");
+        // console.log("result:  ", result);
+        // console.log('b3');
+        // const postId = await getPostIdBySlug(slug);
+        // if(!postId) throw new Error("Get post id by slug is failed!");
         
         // await insertDataInPostUser(userId, postId);
         // const insertPostUser = await insertDataInPostUser(userId, postId);
@@ -64,7 +67,7 @@ export async function createNewPost(userId:number, prevState:PostState, formData
             message:`Create a post failed:  + ${error}`
         }
     }
-    
+    console.log('b4');
     revalidatePath('/manage-blog/posts');
     redirect('/manage-blog/posts');
 }
@@ -155,6 +158,13 @@ export async function createCategoryPost(prevPostState:PostCategoryState, formDa
     redirect('/manage-blog/categories');
 }
 
+/**
+ * update kind of post
+ * @param id 
+ * @param prevPostState 
+ * @param formData 
+ * @returns 
+ */
 export async function updatePostCategory(id: number, prevPostState:PostCategoryState, formData: FormData) {
     const validatedFields = validatedPostCategory(CreatePostCategory, formData);
     if (!validatedFields.success) {

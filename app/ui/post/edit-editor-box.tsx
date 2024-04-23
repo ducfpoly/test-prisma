@@ -4,7 +4,7 @@ import Toolbar from "@/app/ui/post/toolbar";
 import SidebarPost from "@/app/ui/post/sidebar-post";
 import { useFormState } from 'react-dom';
 import { useState } from "react";
-import { updatePost } from "@/lib/actions-post";
+import { updatePost } from "@/lib/post-actions";
 import { PostCategoriesType, PostType } from "@/helpers/definitions";
 import { initialState } from "@/configs/constants";
 import { editorConfig } from "@/configs/editor.config";

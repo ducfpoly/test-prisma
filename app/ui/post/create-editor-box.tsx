@@ -9,6 +9,7 @@ import { useState } from "react";
 import { createNewPost } from '@/lib/actions-post';
 import { editorConfig } from '@/configs/editor.config';
 import { useFormState } from 'react-dom';
+import { initialState } from '@/configs/constants';
 
 const EditorBox = ({
     categories,
@@ -22,7 +23,6 @@ const EditorBox = ({
         setContent(content);
     }
     const editor = useEditor(editorConfig);
-    const initialState = { message: null||"", errors: {} };
     const createNewPostAndAddUserId = createNewPost.bind(null, userId);
     const [state, dispatch] = useFormState(createNewPostAndAddUserId, initialState);
     if(!editor) return null;

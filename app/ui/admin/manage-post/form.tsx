@@ -9,7 +9,6 @@ export async function FormChangeIsShowPost({
     status: string
 }) {
     const changeStatusPostWithId = changeStatusPost.bind(null, post.id);
-    console.log("status1::", status);
     return (
         <>
             <form 
