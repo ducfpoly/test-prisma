@@ -8,7 +8,7 @@ import Image from 'next/image'
   
 export const EmojiList = forwardRef((props:any, ref) => {
     const [selectedIndex, setSelectedIndex] = useState(0)
-  
+    // console.log("selectedIndex:  ", selectedIndex)
     const selectItem = (index: any) => {
       const item:any = props.items[index]
   
@@ -17,39 +17,39 @@ export const EmojiList = forwardRef((props:any, ref) => {
       }
     }
   
-    const upHandler = () => {
-      setSelectedIndex(((selectedIndex + props.items.length) - 1) % props.items.length)
-    }
+    // const upHandler = () => {
+    //   setSelectedIndex(((selectedIndex + props.items.length) - 1) % props.items.length)
+    // }
   
-    const downHandler = () => {
-      setSelectedIndex((selectedIndex + 1) % props.items.length)
-    }
+    // const downHandler = () => {
+    //   setSelectedIndex((selectedIndex + 1) % props.items.length)
+    // }
   
-    const enterHandler = () => {
-      selectItem(selectedIndex)
-    }
+    // const enterHandler = () => {
+    //   selectItem(selectedIndex)
+    // }
   
-    useEffect(() => setSelectedIndex(0), [props.items])
+    // useEffect(() => setSelectedIndex(0), [props.items])
   
-    useImperativeHandle(ref, () => {
-        return {
-            onKeyDown: (x:any)=> {
-                if (x.event.key === 'ArrowUp') {
-                    upHandler()
-                    return true
-                }
-                if (x.event.key === 'ArrowDown') {
-                    downHandler()
-                    return true
-                }
-                if (x.event.key === 'Enter') {
-                    enterHandler()
-                    return true
-                }
-                return false
-            },
-        }
-    }, [upHandler, downHandler, enterHandler])
+    // useImperativeHandle(ref, () => {
+    //     return {
+    //         onKeyDown: (x:any)=> {
+    //             if (x.event.key === 'ArrowUp') {
+    //                 upHandler()
+    //                 return true
+    //             }
+    //             if (x.event.key === 'ArrowDown') {
+    //                 downHandler()
+    //                 return true
+    //             }
+    //             if (x.event.key === 'Enter') {
+    //                 enterHandler()
+    //                 return true
+    //             }
+    //             return false
+    //         },
+    //     }
+    // }, [upHandler, downHandler, enterHandler])
   
         return (
         <div className="items relative">

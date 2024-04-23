@@ -66,7 +66,7 @@ export const editorConfig =  {
         }),
         Emoji.configure({
           emojis: gitHubEmojis,
-          enableEmoticons: true,
+          // enableEmoticons: true,
           suggestion,
         }),
         FileHandler.configure({
@@ -99,7 +99,7 @@ export const editorConfig =  {
                         currentEditor.chain().insertContentAt(currentEditor.state.selection.anchor, {
                             type: 'image',
                             attrs: {
-                            src: fileReader.result,
+                              src: fileReader.result,
                             },
                         }).focus().run()
                     }

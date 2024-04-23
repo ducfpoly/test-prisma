@@ -1,4 +1,4 @@
-import { deletePostCategory } from "@/lib/post-actions";
+import { deletePostCategory } from "@/lib/actions-post";
 
 const DeletePostCategory = ({
     categoryId

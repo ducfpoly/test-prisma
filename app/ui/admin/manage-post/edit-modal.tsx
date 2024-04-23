@@ -6,7 +6,7 @@ import { useFormState } from "react-dom";
 import { initialState } from "@/configs/constants";
 import { PostCategoriesType } from "@/helpers/definitions";
 import initIcon from "@/public/tree.jpg";
-import { updatePostCategory } from "@/lib/post-actions";
+import { updatePostCategory } from "@/lib/actions-post";
 
 export const EditModalPostCategories = ({
     category

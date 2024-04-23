@@ -4,7 +4,7 @@ import Toolbar from "@/app/ui/post/toolbar";
 import SidebarPost from "@/app/ui/post/sidebar-post";
 import { useFormState } from 'react-dom';
 import { useState } from "react";
-import { updatePost } from "@/lib/post-actions";
+import { updatePost } from "@/lib/actions-post";
 import { PostCategoriesType, PostType } from "@/helpers/definitions";
 import { initialState } from "@/configs/constants";
 import { editorConfig } from "@/configs/editor.config";
@@ -32,7 +32,6 @@ const FormEditEditor = ({
     if(!post) return null;
     // editor.chain().setContent(`${content}`).run();
 
-    
     return ( 
         <form className='grid grid-cols-3 gap-3' action={dispatch}>
             <div className='col-start-1 col-end-3 border-2 border-orange-400 rounded-xl p-5'>

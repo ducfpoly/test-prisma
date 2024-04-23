@@ -44,14 +44,14 @@ export const suggestion = {
           getReferenceClientRect: props.clientRect,
         })
       },
-      onKeyDown(props:any) {
-        if (props.event.key === 'Escape') {
-          popup[0].hide()
-          component.destroy()
-          return true
-        }
-        return component.ref?.onKeyDown(props)
-      },
+      // onKeyDown(props:any) {
+      //   if (props.event.key === 'Escape') {
+      //     popup[0].hide()
+      //     component.destroy()
+      //     return true
+      //   }
+      //   return component.ref?.onKeyDown(props)
+      // },
       onExit() {
         popup[0].destroy()
         component.destroy()

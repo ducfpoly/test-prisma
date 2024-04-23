@@ -20,12 +20,15 @@ import {
     Pilcrow,
     ListPlus,
     ListTree,
-    SmilePlus
+    SmilePlus,
+    Image
     // Image
 } from "lucide-react";
 import EmotionPopup from './emotion-popup';
+import { useRef } from 'react';
 // import { useState } from 'react';
 // import { useCallback } from "react";
+import { upload } from '@vercel/blob/client';
 
 const Toolbar = ({ editor }: {editor: Editor|null}) => {
     if (!editor) return null;
@@ -36,6 +39,29 @@ const Toolbar = ({ editor }: {editor: Editor|null}) => {
     //             editor.chain().focus().setImage({ src: url }).run()
     //         }
     // }, [editor])
+    const inputImageRef = useRef(null);
+
+    const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!e.target.files) {
+            throw new Error('No file selected');
+        }
+        // setLoading(true);
+        const file = e.target.files[0];
+        const result = await upload(file.name, file, {
+            access: 'public',
+            handleUploadUrl: '/blog/create/upload',
+            // clientPayload: slug
+        });
+        // setLoading(false);
+        // setThumbnail(result?.url);
+    }
+    const peekImage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        // console.log(inputImageRef.current);
+        if(inputImageRef.current) {
+            const input: HTMLElement = inputImageRef.current;
+            input.click();
+        }
+    }
     return (
         <div
             className="px-4 py-3 rounded-tl-md rounded-tr-md flex justify-between items-start
@@ -296,14 +322,20 @@ const Toolbar = ({ editor }: {editor: Editor|null}) => {
             >
                 <Redo className="w-5 h-5" />
             </button>
-            {/* <button
+            {/* Add image */}
+            <button
                 type="button"
                 title="button change"
-                onClick={(e) => addImage(e)}
+                onClick={(e) => peekImage(e)}
                 className="active:bg-sky-700 active:text-white active:p-2 active:rounded-lg text-sky-400 hover:bg-sky-700 hover:text-white p-1 hover:rounded-lg"
             >
                 <Image className="w-5 h-5" />
-            </button> */}
+                {/* <label className='peer-checked'><Image className="w-5 h-5" /></label> */}
+                <input type='file' hidden ref={inputImageRef} onChange={
+                    (e) => handleUpload(e)
+                }/>
+            </button>
+            {/* add icon */}
             <Tippy
                 content = { <EmotionPopup editor={editor}/> }
                 placement='top-end'
@@ -312,7 +344,7 @@ const Toolbar = ({ editor }: {editor: Editor|null}) => {
                 hideOnClick="toggle"
                 interactive={true}
             >
-                <button 
+                <button
                     type='button'
                     id="emoji"
                 >

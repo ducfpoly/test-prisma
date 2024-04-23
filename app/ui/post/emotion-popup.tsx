@@ -2,7 +2,7 @@
 import { gitHubEmojis } from "@tiptap-pro/extension-emoji";
 import { Editor } from "@tiptap/react";
 import Image from 'next/image';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const EmotionPopup = ({
     editor

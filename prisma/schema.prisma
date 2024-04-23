@@ -101,7 +101,7 @@ model Post {
   is_show Show @default(Show)
   // post_date DateTime?
   user User @relation(fields: [author_id], references: [id])
-  author_id Int @unique
+  author_id Int
   comment_count Int @default(0)
   comment Comment[]
   post_collection Post_Collection[]
