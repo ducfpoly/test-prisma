@@ -1,8 +1,15 @@
+import CommentList, {
+    CommentMain
+} from "@/app/ui/post/detail/comment";
 import ContentMainDetailPost from "@/app/ui/post/detail/content";
-import FormComment from "@/app/ui/post/detail/form-comment";
-import ListComment from "@/app/ui/post/detail/list-comment";
-import {TheBestViewPost, ManyViewsPosts} from "@/app/ui/post/detail/posts";
-import { fetchPostBySlug, fetchPostCategoryById } from "@/lib/data-post";
+import {
+    TheBestViewPost,
+    ManyViewsPosts
+} from "@/app/ui/post/detail/posts";
+import { 
+    fetchPostBySlug, 
+    fetchPostCategoryById 
+} from "@/lib/data-post";
 import { Suspense } from "react";
 
 export default async function Page({ params }: { params: { slug: string }}) {
@@ -24,15 +31,16 @@ export default async function Page({ params }: { params: { slug: string }}) {
                 </Suspense>
             </div>
             <hr className="w-full h-1 mx-auto my-12 bg-gray-300 border-0 rounded md:my-8 dark:bg-gray-300"/>
-            {/* Comment */}
+            
             <div className="grid grid-cols-3 gap-3 mt-5 pt-6">
+                {/* Comment */}
                 <div className="col-start-1 col-end-3">
                     <h1 className="my-5 text-orange-600 text-2xl border-b-2 border-orange-200 inline-block p-1">Comments ({post.comment_count})</h1>
                     <Suspense>
-                        <FormComment/>
+                        <CommentMain/>
                     </Suspense>
                     <Suspense>
-                        <ListComment/>
+                        <CommentList/>
                     </Suspense>
                 </div>
                 {/* Posts with other topics*/}
