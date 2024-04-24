@@ -26,5 +26,10 @@ connection.query(query, [id], (err, result) => {
 - filter: dropdown
 - comment: ui, logic, ...
 
+<<<<<<< HEAD
 # Environment
 - [Example .env](https://github.com/vercel/next.js/tree/canary/examples/environment-variables)
+=======
+<!--  -->
+
+>>>>>>> efd220693376726792b839b034d7a42e2c974445
