@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  background-color: #fff;
+  font-size:16px;
+}
+/* Editor */
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 16px;
+}
+h5 {
+  font-size: 13px;
+  color: #8b8484;
+}
+/* Skeleton */
+.skeleton {
+  background-color: #f9fafb;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+    
+::-webkit-scrollbar-track {
+    border: 1px solid yellowgreen;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: yellowgreen;  
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #88ba1c;  
+}
+
+/* Emoji */
+.items {
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    background: #FFF;
+    color: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    font-size: 0.9rem;
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.05),
+        0px 10px 20px rgba(0, 0, 0, 0.1),
+    ;
+}
+
+.item {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border-radius: 0.4rem;
+    border: 1px solid transparent;
+    padding: 0.2rem 0.4rem;
+}
+.item.is-selected {
+    border-color: #000;
+}
+
+.slider {
+    position: relative;
+    width: 200px;
+}
+
+/* View range */
+.view-range .slider__track,
+.view-range .slider__range,
+.view-range .slider__left-value,
+.view-range .slider__right-value {
+    position: absolute;
+}
+  
+.view-range .slider__track,
+.view-range .slider__range {
+    border-radius: 3px;
+    height: 5px;
+}
+  
+.view-range .slider__track {
+    /* background-color: #ced4da; */
+    /* width: 100%; */
+    /* z-index: 1; */
+}
+.view-range .slider__range {
+    background-color: #9fe5e1;
+    z-index: 2;
+}
+.view-range .slider__left-value {
+    left: 6px;
+}
+.view-range .slider__right-value {
+    right: -4px;
+}
+/* Removing the default appearance */
+.view-range .thumb,
+.view-range .thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.view-range .thumb {
+    pointer-events: none;
+    position: absolute;
+    height: 0;
+    width: 200px;
+    outline: none;
+}
+.view-range .thumb--zindex-3 {
+    z-index: 3;
+}
+.view-range .thumb--zindex-4 {
+    z-index: 4;
+}
+.view-range .thumb--zindex-5 {
+    z-index: 5;
+}
+
+/* For Chrome browsers */
+.view-range .thumb::-webkit-slider-thumb {
+    background-color: #000;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 1px #ced4da;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    margin-top: 4px;
+    pointer-events: all;
+    position: relative;
+}
+
+/* For Firefox browsers */
+.view-range .thumb::-moz-range-thumb {
+    background-color: #000;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 1px #ced4da;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    margin-top: 4px;
+    pointer-events: all;
+    position: relative;
+}
