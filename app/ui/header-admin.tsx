@@ -59,7 +59,8 @@ export default function  HeaderAdmin ({
                         />
                     </div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-gray-100 rounded-box w-60">
-                        {session ? (
+                        {
+                            session && (
                             <>
                                 <li className="px-4 py-3">
                                     <span className="block text-sm text-black dark:text-white">{session?.user?.name}</span>
@@ -76,16 +77,6 @@ export default function  HeaderAdmin ({
                                     </ul>
                                 </li>
                             </>
-                        ) :   (    
-                        <>
-                                <li>
-                                    <ul className="p-2" aria-labelledby="user-menu-button">
-                                        <li>
-                                            <Link href="/api/auth/signin">Signin</Link>
-                                        </li>
-                                    </ul>
-                                </li>
-                        </>
                         )}
                     </ul>
                 </div>

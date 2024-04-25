@@ -12,10 +12,7 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.5.1",
-<<<<<<< HEAD
     "@next/env": "^14.2.2",
-=======
->>>>>>> efd220693376726792b839b034d7a42e2c974445
     "@prisma/client": "^5.11.0",
     "@tippyjs/react": "^4.2.6",
     "@tiptap-pro/extension-emoji": "^2.7.7",

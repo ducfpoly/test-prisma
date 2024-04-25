@@ -51,34 +51,34 @@ export default function Header({
                             alt="user photo"
                         />
                     </div>
-                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-gray-100 rounded-box">
                         {session ? (
                             <>
                                 <li className="px-4 py-3">
-                                    <span className="block text-sm text-gray-900 dark:text-white">{session?.user?.name}</span>
-                                    <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">{session?.user?.email}</span>
+                                    <span className="block text-sm text-black dark:text-white">{session?.user?.name}</span>
+                                    <span className="block text-sm  text-black truncate dark:text-gray-400">{session?.user?.email}</span>
                                 </li>
-                                <li>
+                                <li className="p-0">
                                     <ul className="p-2" aria-labelledby="user-menu-button">
-                                        <li className="border-[1px] border-gray-100 px-2 rounded-xl">
+                                        <li className="border-[1px] border-gray-300 text-center text-black rounded-xl">
                                             <Link href="/user/profile">Profile</Link>
                                         </li>
-                                        <li className="border-[1px] border-gray-100 px-2 rounded-xl mt-2">
+                                        <li className="border-[1px] border-gray-300 text-center text-black rounded-xl mt-2">
                                             <Link href="/api/auth/signout?callbackUrl=/">Logout</Link>
                                         </li>
                                     </ul>
                                 </li>
                             </>
                         ) :   (    
-                           <>
-                                <li>
-                                    <ul className="p-2" aria-labelledby="user-menu-button">
-                                        <li>
-                                            <Link href="/api/auth/signin">Signin</Link>
-                                        </li>
-                                    </ul>
-                                </li>
-                           </>
+                        <>
+                            <li>
+                                <ul className="p-2" aria-labelledby="user-menu-button">
+                                    <li>
+                                        <Link href="/api/auth/signin" className="text-black">Signin</Link>
+                                    </li>
+                                </ul>
+                            </li>
+                        </>
                         )}
                     </ul>
                 </div>

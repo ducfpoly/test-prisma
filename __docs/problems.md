@@ -26,10 +26,21 @@ connection.query(query, [id], (err, result) => {
 - filter: dropdown
 - comment: ui, logic, ...
 
-<<<<<<< HEAD
 # Environment
 - [Example .env](https://github.com/vercel/next.js/tree/canary/examples/environment-variables)
-=======
-<!--  -->
 
->>>>>>> efd220693376726792b839b034d7a42e2c974445
+- https://www.youtube.com/watch?v=3x58TRA7who&ab_channel=CompuMatter%2CLLC
+- https://www.youtube.com/watch?v=ePCBuIQJAUc&ab_channel=ProgrammingKnowledge
+- https://www.freecodecamp.org/news/error-failed-to-push-some-refs-to-how-to-fix-in-git/
+- https://www.youtube.com/watch?v=5ggW3LYKB8E&ab_channel=ByteProgramming
+- https://www.nobledesktop.com/learn/git/undo-changes#:~:text=The%20last%20commit%20that%20has,back%20to%20the%20staging%20area.
+
+```bash
+$ git pull
+$ git branch --set-upstream-to=origin/<branch> master
+$ git add .gitignore
+$ git commit -m "??"
+$ git pull
+$ git push origin master
+$ git add/rm <file>
+```

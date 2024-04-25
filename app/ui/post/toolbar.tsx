@@ -55,6 +55,10 @@ const Toolbar = ({ editor }: {editor: Editor|null}) => {
         // setLoading(false);
         // setThumbnail(result?.url);
     }
+//     <form action="/action_page.php">
+//   <input type="file" id="myFile" name="filename">
+//   <input type="submit">
+// </form>
     const peekImage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         // console.log(inputImageRef.current);
         if(inputImageRef.current) {
