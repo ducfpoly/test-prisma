@@ -4,6 +4,7 @@ import Link from "next/link";
 import moment from "moment";
 import { PostType } from "@/helpers/definitions";
 import { processContentAddition } from "@/utils/posts.util";
+import conan from "@/public/conan.jpg";
 // import { Suspense } from "react";
 // import { 
 //     LatestPostMarketingSkeleton,
@@ -48,7 +49,7 @@ export async function LatestPostTech({techPost}: {techPost:PostType}) {
                 <figure className="px-10 pt-10 p-4 h-[520px] w-[700px] relative m-auto">
                     <Image
                         className="rounded-2xl object-cover"
-                        src={techPost.thumbnail || ''}
+                        src={techPost.thumbnail || conan}
                         // height={420}
                         // width={100}
                         fill={true}
@@ -79,7 +80,7 @@ export async function LatestPostMarketing({marketingPost}: {marketingPost:PostTy
             <figure className="px-10 pt-10 p-4 h-[182px] w-[340px] relative m-auto">
                 <Image
                     className="rounded-xl object-cover"
-                    src={marketingPost?.thumbnail || ''}
+                    src={marketingPost?.thumbnail || conan}
                     // height={182}
                     // width={304}
                     fill
@@ -104,7 +105,7 @@ export async function LatestPostBusiness({businessPost}: {businessPost:PostType}
             <figure className="px-10 pt-10 p-4 h-[182px] w-[340px] relative m-auto">
                 <Image
                     className="rounded-xl object-cover"
-                    src={businessPost.thumbnail || ''}
+                    src={businessPost.thumbnail || conan}
                     // height={182}
                     // width={304}
                     fill={true}

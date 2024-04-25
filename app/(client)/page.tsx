@@ -18,24 +18,24 @@ import {
 } from "@/app/ui/home/skeletons-home";
 
 export default async function Page() {
-  return (
-    <Suspense fallback={<HomePageSkeleton/>}>
-        {/* New post */}
-        <Suspense fallback={<LatestPostSkeleton/>}>
-          <LatestPost/>
+    return (
+        <Suspense fallback={<HomePageSkeleton/>}>
+            {/* New post */}
+            <Suspense fallback={<LatestPostSkeleton/>}>
+                <LatestPost/>
+            </Suspense>
+            {/* Tech Post */}
+            <Suspense fallback={<TechPostsSkeleton/>}>
+                <TechPost/>
+            </Suspense>
+            {/* Categories */}
+            <Suspense fallback={<CategoryPostSkeleton/>}>
+                <CategoryPost/>
+            </Suspense>
+            {/* Interesting post */}
+            <Suspense fallback={<InterestingPostSkeleton/>}>
+                <InterestingPost/>
+            </Suspense>
         </Suspense>
-        {/* Tech Post */}
-        <Suspense fallback={<TechPostsSkeleton/>}>
-          <TechPost/>
-        </Suspense>
-        {/* Categories */}
-        <Suspense fallback={<CategoryPostSkeleton/>}>
-          <CategoryPost/>
-        </Suspense>
-        {/* Interesting post */}
-        <Suspense fallback={<InterestingPostSkeleton/>}>
-          <InterestingPost/>
-        </Suspense>
-    </Suspense>
-  )
+    )
 }

@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import "@/app/globals.css";
 import { Provider } from "../ui/MainContent";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 const LayoutAdmin = async ({
@@ -18,6 +19,7 @@ const LayoutAdmin = async ({
     }
     return (
         <html lang="en">
+          <SpeedInsights/>
             <body className={inter.className}>
                 <Provider session={session}>
                     {children}

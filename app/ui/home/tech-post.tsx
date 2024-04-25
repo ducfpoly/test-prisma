@@ -4,6 +4,7 @@ import moment from "moment";
 import Link from "next/link";
 import { PostType } from "@/helpers/definitions";
 import { processContentAddition } from "@/utils/posts.util";
+import conan from "@/public/conan.jpg";
 
 export default async function TechPost() {
     const posts = await fetchManyViewsEachPost(1, 3);
@@ -23,7 +24,7 @@ export default async function TechPost() {
                                     <figure className="w-full h-[260px] relative">
                                         <Image
                                             className="shadow-xl object-cover"
-                                            src={post.thumbnail||''}
+                                            src={post.thumbnail || conan}
                                             // height={400}
                                             // width={400}
                                             fill

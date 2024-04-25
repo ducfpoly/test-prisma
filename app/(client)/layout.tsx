@@ -6,7 +6,7 @@ import Footer from "@/app/ui/footer";
 import { fetchAllPostCategories } from "@/lib/data-post";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,6 +27,7 @@ export default async function RootLayout({
   }
   return (
     <html lang="en">
+      <SpeedInsights/>
       <body className={inter.className}>
         <Header session={session ? session : null} categories={categories}/>
         <main className="min-h-screen p-24 w-full">
