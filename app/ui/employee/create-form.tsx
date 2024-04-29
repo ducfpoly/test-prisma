@@ -6,6 +6,9 @@ import { DepartmentType } from "@/helpers/definitions";
 import React, { useContext, useState } from "react";
 import { createEmployee } from "@/lib/actions-employee";
 import ThemeContext from "@/app/store/hooks";
+import { useFormState } from "react-dom";
+import { initialState } from "@/configs/constants";
+import { State } from "@/validators/validate-employee";
 export default function FormCreateEmployee({
     departments,
 }:{
@@ -17,6 +20,7 @@ export default function FormCreateEmployee({
         setEmail(newEmail);
     }
     const theme = useContext(ThemeContext);
+    // const [state, dispatch] = useFormState(createEmployee, initialState);
     return (
        <>
             <form className="max-w-md mx-auto text-black mt-5" 

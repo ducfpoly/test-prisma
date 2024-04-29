@@ -14,7 +14,7 @@ import {
  * @param formData 
  * @returns 
  */
-export async function createEmployee(prev: State, formData: FormData) {
+export async function createEmployee(formData: FormData) {
     const validatedFields = validatedEmployee(CreateEmployee, formData);
     if (!validatedFields.success) {
         return {
@@ -48,6 +48,7 @@ export async function createEmployee(prev: State, formData: FormData) {
     
     revalidatePath('/employee');
     redirect('/employee');
+    // return prev;
 }
 
 export async function updateEmployee(id: string, formData: FormData) {
