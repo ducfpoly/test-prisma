@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import "@/app/globals.css";
-import { Provider } from "../ui/MainContent";
+import { Provider } from "@/app/ui/MainContent";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 

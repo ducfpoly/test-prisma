@@ -16,11 +16,16 @@ export function CommentMain({
     parentId
 } : CommentMainProps){
     const initialState = { message: null || "", errors: {} };
-
     const createCommentWithId = createNewComment.bind(null, postId, userId, parentId);
     const [state, dispatch] = useFormState(createCommentWithId, initialState);
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        if(!userId) {
+            e.preventDefault();
+        }
+    }
     return (
-        <form className="p-4" action={dispatch}>
+        <form className="p-4" action={dispatch} onSubmit={e => handleSubmit(e)} id="form-submit-main-comment">
             <label htmlFor="comment-main" className="sr-only">Your message</label>
             <div className="flex items-center px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-700">
                 <button type="button" className="p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
@@ -50,7 +55,7 @@ export function CommentMain({
 
 export function InputReplySubComment() {
     return (
-        <form className="ml-1 ">
+        <form className="ml-1">
             <label htmlFor="chat" className="sr-only">Your message</label>
             <div className="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
             <button type="button" className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600">
@@ -79,18 +84,6 @@ export function InputReplySubComment() {
     )
 }
 
-// type Props = {
-//     inputReplyMainComment: React.ReactNode[],
-//     inputReplySubComment: React.ReactNode[],
-//     replyMainComment: ()=>void
-//     replySubComment: ()=>void
-// }
-// export function CommentParentItem({
-//     inputReplyMainComment,
-//     inputReplySubComment,
-//     replyMainComment,
-//     replySubComment
-// }: Props) {
 export function CommentParentItem() {
     
     // console.log("inputReplyMainComment:  ", inputReplyMainComment);
@@ -258,7 +251,7 @@ export default function CommentList() {
     // const [commentList, setCommentList] = useState<React.ReactNode[]>([]);
     
     return (
-       <>
+        <>
             {/* <CommentParentItem 
                 inputReplyMainComment={inputReplyMainComment}
                 inputReplySubComment={inputReplySubComment}
@@ -266,6 +259,6 @@ export default function CommentList() {
                 replySubComment={replySubComment}
             /> */}
             <CommentParentItem/>
-       </>
+        </>
     )
 }

@@ -15,22 +15,26 @@ import {
 } from "@/lib/data-post";
 import { Suspense } from "react";
 
-export default async function Page({ params }: { params: { slug: string }}) {
+export default async function Page({ 
+    params 
+} : { 
+    params: { slug: string }
+}) {
     const slug = decodeURIComponent(params.slug);
     const post = await fetchPostBySlug(slug);
     
     if(!post) return;
     const category = await fetchPostCategoryById(post.post_type_id || 1);
-    // const data = await Promise.all([
-    //     // await fetchAllPostCategories(),
-    // ]);
-    // const postCategories:PostCategoriesType[] = data[0];
     
     const session = await auth();
-    if(!session) return
-    if(!session.user) return
-    const email = session.user.email;
-    const user = await getUserByEmail(email!) as User;
+    const email = session?.user?.email;
+    let user = {
+        id: 0
+    };
+    
+    if(email) {
+        user = await getUserByEmail(email) as User;
+    }
 
     return (
         <>
@@ -50,11 +54,13 @@ export default async function Page({ params }: { params: { slug: string }}) {
                 <div className="col-start-1 col-end-3">
                     <h1 className="my-5 text-orange-600 text-2xl border-b-2 border-orange-200 inline-block p-1">Comments ({post.comment_count})</h1>
                     <Suspense>
-                        <CommentMain 
-                            postId={post.id}
-                            userId={user.id}
-                            parentId={0}
-                        />
+                        {
+                            user && <CommentMain 
+                                postId={post.id}
+                                userId={user.id || 0}
+                                parentId={0}
+                            />
+                        }
                     </Suspense>
                     <Suspense>
                         <CommentList/>

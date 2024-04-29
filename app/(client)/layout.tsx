@@ -30,9 +30,9 @@ export default async function RootLayout({
       <SpeedInsights/>
       <body className={inter.className}>
         <Header session={session ? session : null} categories={categories}/>
-        <main className="min-h-screen p-24 w-full">
-          {children}
-        </main>
+          <main className="min-h-screen p-24 w-full">
+            {children}
+          </main>
         <Footer/>
       </body>
     </html>

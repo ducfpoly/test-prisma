@@ -10,6 +10,7 @@ import { createNewPost } from '@/lib/actions-post';
 import { editorConfig } from '@/configs/editor.config';
 import { useFormState } from 'react-dom';
 import { initialState } from '@/configs/constants';
+// import process from 'process';
 
 const EditorBox = ({
     categories,
@@ -18,16 +19,30 @@ const EditorBox = ({
     categories: PostCategoriesType[],
     userId: number
 }) => {
+    console.time("test-time-editor");
     const [content, setContent] = useState('');
     function handleChange(content: string) {
         setContent(content);
     }
+    // useEffect(()=> {
+        
+    // })
+    console.time("test-time-editor-init");
     const editor = useEditor(editorConfig);
+    console.timeEnd("test-time-editor-init");
     const createNewPostAndAddUserId = createNewPost.bind(null, userId);
     const [state, dispatch] = useFormState(createNewPostAndAddUserId, initialState);
     if(!editor) return null;
     editor.on('update',() => handleChange(editor?.getHTML() || ''));
-    
+    let cursorPosition:number = 0;
+    editor.on('update', ({ editor }) => {
+        cursorPosition = editor.view.state.selection.$anchor.pos;
+        console.log('cursorPosition:', cursorPosition)
+    })
+    console.timeEnd("test-time-editor");
+    // const used = process.memoryUsage();
+    // console.log("used::", used);
+
     return (
         <form className='grid grid-cols-3 gap-3' action={dispatch}>
             <div className='col-start-1 col-end-3 border-2 border-orange-400 rounded-xl p-5'>
@@ -47,7 +62,7 @@ const EditorBox = ({
                         Title
                     </label>
                 </div>
-                <Toolbar editor={editor}/>
+                <Toolbar editor={editor} cursorPosition={cursorPosition}/>
                 <EditorContent editor={editor}/>
                 <input type="text" defaultValue={content} hidden name='content'/>
             </div>

@@ -9,7 +9,7 @@ import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { HomePageSkeleton } from "@/app/ui/home/skeletons-home";
-import { fetchAllPostCategories } from "@/lib/data-post";
+// import { fetchAllPostCategories } from "@/lib/data-post";
 import {
   CategoryPostSkeleton,
   InterestingPostSkeleton,

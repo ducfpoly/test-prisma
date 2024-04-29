@@ -4,17 +4,19 @@ import { fetchNewPostRelated } from "@/lib/data-post";
 import { formatDate } from "@/utils/functions";
 import { getAuthorOfPost } from "@/lib/data-user";
 
-const ContentMainDetailPost = async ({
+export default async function ContentMainDetailPost ({
     category,
     post
 } : {
     category: string|undefined,
     post: PostType
-}) => {
+}) {
+    console.log("============");
     const data = await Promise.all([
         await fetchNewPostRelated(post.post_type_id),
         await getAuthorOfPost(post.author_id) as User
     ])
+    console.log(data);
     const relatedPosts = data[0];
     const author = data[1];
     return (
@@ -37,5 +39,3 @@ const ContentMainDetailPost = async ({
         </div>
     );
 }
-
-export default ContentMainDetailPost;

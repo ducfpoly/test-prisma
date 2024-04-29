@@ -25,7 +25,7 @@ const SidebarPost = ({
         const file = e.target.files[0];
         const result = await upload(file.name, file, {
             access: 'public',
-            handleUploadUrl: '/blog/create/upload',
+            handleUploadUrl: '/api/upload-vercel',
             // clientPayload: slug
         });
         setLoading(false);
