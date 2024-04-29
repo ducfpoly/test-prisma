@@ -75,7 +75,7 @@ const Toolbar = ({
         const name = file.name;
         const result = await upload(file.name, file, {
             access: 'public',
-            handleUploadUrl: '/blog/create/upload',
+            handleUploadUrl: '/api/upload-vercel',
         });
         console.log("url::  ", result?.url);
         editor.commands.setImage({src:`${name}`, alt:`${name}`, title:`${name}`})
