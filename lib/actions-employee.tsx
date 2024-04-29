@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import prisma from "@/prisma/client";
 import {
     CreateEmployee,
+    State,
     UpdateEmployee,
     validatedEmployee 
 } from '@/validators/validate-employee';
@@ -13,7 +14,7 @@ import {
  * @param formData 
  * @returns 
  */
-export async function createEmployee(formData: FormData) {
+export async function createEmployee(prev: State, formData: FormData) {
     const validatedFields = validatedEmployee(CreateEmployee, formData);
     if (!validatedFields.success) {
         return {

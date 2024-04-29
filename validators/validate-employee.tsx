@@ -8,6 +8,8 @@ const FormSchema = z.object({
     phone: z.string(),
     department_id: z.string(),
     email: z.string(),
+    updated_at: z.string(),
+    created_at: z.string(),
 });
  
 export const CreateEmployee = FormSchema.omit({ 
