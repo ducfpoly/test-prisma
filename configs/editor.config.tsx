@@ -14,7 +14,7 @@ import CodeBlock from '@tiptap/extension-code-block'
 import OrderedList from '@tiptap/extension-ordered-list'
 import Emoji, { gitHubEmojis } from '@tiptap-pro/extension-emoji'
 import { suggestion } from './suggestion-editor.config';
-import ImageResize from 'tiptap-extension-resize-image';
+// import ImageResize from 'tiptap-extension-resize-image';
 
 export const editorConfig =  {
     extensions: [
@@ -30,12 +30,12 @@ export const editorConfig =  {
             blockquote:false,
         }),
         Underline,
-        ImageResize.configure({
-          inline: true,
-          HTMLAttributes: {
-            class: 'border-2 border-orange-200 my-4 w-1/2 h-auto mx-auto',
-          },
-        }),
+        // ImageResize.configure({
+        //   inline: true,
+        //   HTMLAttributes: {
+        //     class: 'border-2 border-orange-200 my-4 w-1/2 h-auto mx-auto',
+        //   },
+        // }),
         Image.configure({
           inline: true,
           // allowBase64: true,
