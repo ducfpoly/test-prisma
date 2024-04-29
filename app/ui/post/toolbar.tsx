@@ -78,7 +78,7 @@ const Toolbar = ({
             handleUploadUrl: '/api/upload-vercel',
         });
         console.log("url::  ", result?.url);
-        editor.commands.setImage({src:`${name}`, alt:`${name}`, title:`${name}`})
+        editor.commands.setImage({src:`${result?.url}`, alt:`${name}`, title:`${name}`})
     }
     
     // const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
