@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import {options} from "./configs/auth.config";
-
+import { JWT } from "next-auth/jwt"
 // import { NextAuthConfig } from "next-auth";
 
 declare module "next-auth" {
@@ -12,7 +12,7 @@ declare module "next-auth" {
         role: number
     }
 }
-declare module "@auth/core/jwt" {
+declare module "next-auth/jwt" {
     /** Returned by the `jwt` callback and `auth`, when using JWT sessions */
     interface JWT {
         /** OpenID ID Token */
