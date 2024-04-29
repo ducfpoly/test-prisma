@@ -34,11 +34,11 @@ const EditorBox = ({
     const [state, dispatch] = useFormState(createNewPostAndAddUserId, initialState);
     if(!editor) return null;
     editor.on('update',() => handleChange(editor?.getHTML() || ''));
-    let cursorPosition:number = 0;
-    editor.on('update', ({ editor }) => {
-        cursorPosition = editor.view.state.selection.$anchor.pos;
-        console.log('cursorPosition:', cursorPosition)
-    })
+    // let cursorPosition:number = 0;
+    // editor.on('update', ({ editor }) => {
+    //     cursorPosition = editor.view.state.selection.$anchor.pos;
+    //     console.log('cursorPosition:', cursorPosition)
+    // })
     console.timeEnd("test-time-editor");
     // const used = process.memoryUsage();
     // console.log("used::", used);
@@ -62,7 +62,10 @@ const EditorBox = ({
                         Title
                     </label>
                 </div>
-                <Toolbar editor={editor} cursorPosition={cursorPosition}/>
+                <Toolbar
+                    editor={editor} 
+                    // cursorPosition={cursorPosition}
+                />
                 <EditorContent editor={editor}/>
                 <input type="text" defaultValue={content} hidden name='content'/>
             </div>

@@ -50,10 +50,10 @@ import Image, { getImageProps } from 'next/image';
 
 const Toolbar = ({
     editor, 
-    cursorPosition
+    // cursorPosition
 }: {
     editor: Editor|null, 
-    cursorPosition:number
+    // cursorPosition:number
 }) => {
     // let isShowEmoji = false;
     // const addImage = useCallback(() => {
@@ -64,8 +64,8 @@ const Toolbar = ({
     // }, [editor])
     const inputImageRef = useRef(null);
     if (!editor) return null;
-    const $myCustomPos = editor.$pos(cursorPosition + 1);
-    console.log("mynodepos::", $myCustomPos);
+    // const $myCustomPos = editor.$pos(cursorPosition + 1);
+    // console.log("mynodepos::", $myCustomPos);
 
     const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) {
